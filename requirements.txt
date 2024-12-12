@@ -1,4 +1,6 @@
 datasets
+nltk
 openprompt
 torch
 transformers==4.19.0
+sentence-transformers
