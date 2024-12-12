@@ -3,7 +3,7 @@ dataset:
   path: cardiffnlp/super_tweeteval
 
 environment:
-  num_gpus: -1 # use cpu
+  num_gpus: 1
 
 reproduce:
     seed: 42
