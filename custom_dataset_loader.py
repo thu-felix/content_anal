@@ -1,9 +1,10 @@
 import csv
+import datasets
 import os
 import random
 
-from datasets import load_dataset
 from openprompt.data_utils import InputExample, InputFeatures, FewShotSampler
+from openprompt.data_utils.data_processor import DataProcessor
 from openprompt.utils.logging import logger
 from yacs.config import CfgNode
 
@@ -12,40 +13,53 @@ class FakeRealDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
         random.seed(42)
         self.examples = []
-        data_info = {
-            "fake" : {"path: ""Fake.csv"}
-            "real" : {"path: ""Real.csv"}
-        }
 
-        for label in data_info.keys():
-            with open(os.path.join(data_dir, data[label]['path'])) as f:
-                reader = csv.reader(f)
-                col_names = next(reader)
+    def get_examples(self, data_dir=None, split=None):
+        if split == "valid" or split == "dev":
+            split = "validation"
+        
+        if data_dir == None:
+            return []
 
-                for row in reader:
-                    row_data = dict(zip(col_names, row))
-                    text_a = row_data['text']
-                    del row_data['text']
+        if self.examples == []:
+            data_info = {
+                "fake" : "Fake.csv",
+                "real" : "Real.csv"
+            }
 
-                    self.examples.append(InputExample(
-                        text_a = text_a,
-                        label = label,
-                        meta = row_data
-                    ))
+            for label in data_info.keys():
+                with open(os.path.join(data_dir, data_info[label])) as f:
+                    reader = csv.reader(f)
+                    col_names = next(reader)
 
-        random.shuffle(self.examples)
+                    for row in reader:
+                        row_data = dict(zip(col_names, row))
+                        text_a = row_data['text']
+                        del row_data['text']
 
-    def get_examples(self, data_dir, split=None):
-        return random.sample(self.examples, int(len(self.examples) / 3)
+                        self.examples.append(InputExample(
+                            text_a = text_a,
+                            label = label,
+                            meta = row_data
+                        ))
+
+            random.shuffle(self.examples)
+        return random.sample(self.examples, int(len(self.examples) / 3))
 
 class IMDBDataProcessor(DataProcessor):
     def __init__(self, labels=['positive, negative'], labels_path=None):
         super().__init__(labels, labels_path)
 
     def get_examples(self, data_dir='stanfordnlp/imdb', split='train'):
-        ds = load_dataset(data_dir, split=split)
+        if split == "valid" or split == "dev":
+            split = "validation"
 
-        return map(lambda data: InputExample(text_a = data['text'], label = 'negative' if data['label'] == 0 else 'positive'), ds)
+        if data_dir == None:
+            return []
+
+        ds = datasets.load_dataset(data_dir, split=split)
+
+        return list(map(lambda data: InputExample(text_a = data['text'], label = 'negative' if data['label'] == 0 else 'positive'), ds))
 
 class TweetTopicDataProcessor(DataProcessor):
     def __init__(self, labels=None, labels_path=None):
@@ -78,19 +92,24 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        topics = , .join([topic[0] for topic in list(zip(self.topic_labels, data['gold_label_list'])) if topic[1] == 1])
+        topics = ', '.join([topic[0] for topic in list(zip(self.topic_labels, data['gold_label_list'])) if topic[1] == 1])
 
         text_a = data['text']
 
         return InputExample(
             text_a = text_a,
-            label = topics,
+            tgt_text = topics,
         )
 
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
-        ds = load_dataset(data_dir,'tweet_topic', split=split)
+        if split == "valid" or split == "dev":
+            split = "validation"
+        
+        if data_dir == None:
+            return []
 
-        return map(self.convert_data, ds)
+        ds = datasets.load_dataset(data_dir,'tweet_topic', split=split)
+        return list(map(self.convert_data, ds))
 
 PROCESSORS = {
     "fakenews": FakeRealDataProcessor,
