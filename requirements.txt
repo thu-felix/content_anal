@@ -1,4 +1,4 @@
 datasets
 openprompt
 torch
-transformers=4.22
+transformers==4.22
