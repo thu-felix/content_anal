@@ -41,7 +41,7 @@ verbalizer: manual_verbalizer
 
 mixed_template:
   choice: 0
-  file_path: ./template.txt
+  file_path: ./soft_template.txt
 #   optimize:
 #     lr: 0.003
 #     weight_decay: 0.0
