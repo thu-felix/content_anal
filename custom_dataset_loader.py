@@ -21,7 +21,7 @@ class FakeRealDataProcessor(DataProcessor):
             return []
 
         if not self.examples:
-            data_info = {0: "Fake.csv", 1: "Real.csv"}
+            data_info = {0: "Fake.csv", 1: "True.csv"}
             for label, filename in data_info.items():
                 file_path = os.path.join(data_dir, filename)
                 if not os.path.exists(file_path):
