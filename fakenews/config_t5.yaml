@@ -7,7 +7,7 @@ environment:
 
 dataset:
   name: fakenews
-  path: /content/content_anal/fakenews/dataset
+  path: /content/content_anal/fakenews/dataset/
 
 plm:
   model_name: t5
