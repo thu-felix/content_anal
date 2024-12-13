@@ -1,1 +1,1 @@
-{"meta": "news_text"} {"soft" : "Is the sentiment of the above text positive or negative?"} {"mask"} {"soft": None}
+{"placeholder": "text_a"} {"soft" : "Is the sentiment of the above text positive or negative?"} {"mask"} {"soft": None}

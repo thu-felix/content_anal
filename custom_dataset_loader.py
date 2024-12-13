@@ -47,7 +47,7 @@ class FakeRealDataProcessor(DataProcessor):
         return random.sample(self.examples, int(len(self.examples) / 3))
 
 class IMDBDataProcessor(DataProcessor):
-    def __init__(self, labels=['positive, negative'], labels_path=None):
+    def __init__(self, labels=['positive', 'negative'], labels_path=None):
         super().__init__(labels, labels_path)
 
     def get_examples(self, data_dir='stanfordnlp/imdb', split='train'):
