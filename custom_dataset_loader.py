@@ -23,8 +23,8 @@ class FakeRealDataProcessor(DataProcessor):
 
         if self.examples == []:
             data_info = {
-                "fake" : "Fake.csv",
-                "real" : "Real.csv"
+                0 : "Fake.csv",
+                1 : "Real.csv"
             }
 
             for label in data_info.keys():
@@ -47,19 +47,19 @@ class FakeRealDataProcessor(DataProcessor):
         return random.sample(self.examples, int(len(self.examples) / 3))
 
 class IMDBDataProcessor(DataProcessor):
-    def __init__(self, labels=['positive, negative'], labels_path=None):
+    def __init__(self, labels=['positive', 'negative'], labels_path=None):
         super().__init__(labels, labels_path)
 
     def get_examples(self, data_dir='stanfordnlp/imdb', split='train'):
         if split == "valid" or split == "dev":
-            split = "validation"
-
+            split = "test"
+        #if s
         if data_dir == None:
             return []
 
         ds = datasets.load_dataset(data_dir, split=split)
 
-        return list(map(lambda data: InputExample(text_a = data['text'], label = 'negative' if data['label'] == 0 else 'positive'), ds))
+        return list(map(lambda data: InputExample(text_a = data['text'], label = data['label']), ds))
 
 class TweetTopicDataProcessor(DataProcessor):
     def __init__(self, labels=None, labels_path=None):
