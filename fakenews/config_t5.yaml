@@ -21,7 +21,7 @@ plm:
       num_warmup_steps: 500
 
 dataloader:
-  max_seq_length: 128
+  max_seq_length: 512
 
 train:
   num_epochs: 10
