@@ -52,8 +52,8 @@ class IMDBDataProcessor(DataProcessor):
 
     def get_examples(self, data_dir='stanfordnlp/imdb', split='train'):
         if split == "valid" or split == "dev":
-            split = "validation"
-
+            split = "test"
+        #if s
         if data_dir == None:
             return []
 
