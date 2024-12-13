@@ -25,7 +25,8 @@ task: generation
 generation: # Adding any arguments for generation here.
   parent_config: task
   max_length: 512
-  metric: sentence_bleu
+  metric: 
+    - sentence_bleu
 
 
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"

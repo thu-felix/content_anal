@@ -1,1 +1,0 @@
-{"meta": "news_text"} {"soft" : "Does the news text above real or fake?"} {"mask"} {"soft": None}
