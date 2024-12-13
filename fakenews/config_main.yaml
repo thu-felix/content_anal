@@ -60,4 +60,8 @@ classification:
   parent_config: task
   metric:  # the first one will be the main  to determine checkpoint.
     - accuracy  # whether the higher metric value is better.
+    - micro-f1
+    - macro-f1
+    - precision
+    - recall
   loss_function: cross_entropy ## the loss function for classification
