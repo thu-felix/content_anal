@@ -9,7 +9,7 @@ from openprompt.utils.logging import logger
 from yacs.config import CfgNode
 
 class FakeRealDataProcessor(DataProcessor):
-    def __init__(self, labels=['fake, real'], labels_path=None):
+    def __init__(self, labels=['fake', 'real'], labels_path=None):
         super().__init__(labels, labels_path)
         random.seed(42)
         self.examples = []
