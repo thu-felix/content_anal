@@ -16,7 +16,7 @@ plm:
 
 train:
   num_epochs: 5
-  batch_size: 2
+  batch_size: 5
   teacher_forcing: True
   gradient_accumulation_steps: 2
 
@@ -25,6 +25,8 @@ task: generation
 generation: # Adding any arguments for generation here.
   parent_config: task
   max_length: 512
+  metric: ['accuracy', 'loose-micro-f1', 'loose-macro-f1']
+
 
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"
 few_shot:
