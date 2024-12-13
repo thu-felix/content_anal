@@ -59,7 +59,7 @@ class IMDBDataProcessor(DataProcessor):
 
         ds = datasets.load_dataset(data_dir, split=split)
 
-        return list(map(lambda data: InputExample(text_a = data['text'], label = 'negative' if data['label'] == 0 else 'positive'), ds))
+        return list(map(lambda data: InputExample(text_a = data['text'], label = data['label']), ds))
 
 class TweetTopicDataProcessor(DataProcessor):
     def __init__(self, labels=None, labels_path=None):
