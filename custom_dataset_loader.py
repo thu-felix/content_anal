@@ -15,36 +15,33 @@ class FakeRealDataProcessor(DataProcessor):
         self.examples = []
 
     def get_examples(self, data_dir=None, split=None):
-        if split == "valid" or split == "dev":
+        if split in ["valid", "dev"]:
             split = "validation"
-        
-        if data_dir == None:
+        if data_dir is None:
             return []
 
-        if self.examples == []:
-            data_info = {
-                0 : "Fake.csv",
-                1 : "Real.csv"
-            }
+        if not self.examples:
+            data_info = {0: "Fake.csv", 1: "Real.csv"}
+            for label, filename in data_info.items():
+                file_path = os.path.join(data_dir, filename)
+                if not os.path.exists(file_path):
+                    logger.warning(f"File not found: {file_path}")
+                    continue
 
-            for label in data_info.keys():
-                with open(os.path.join(data_dir, data_info[label])) as f:
-                    reader = csv.reader(f)
-                    col_names = next(reader)
-
+                with open(file_path, 'r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
                     for row in reader:
-                        row_data = dict(zip(col_names, row))
-                        text_a = row_data['text']
-                        del row_data['text']
-
-                        self.examples.append(InputExample(
-                            text_a = text_a,
-                            label = label,
-                            meta = row_data
-                        ))
-
+                        text_a = row.get('text', None)
+                        if not text_a:
+                            logger.warning("Missing 'text' column in row, skipping.")
+                            continue
+                        self.examples.append(
+                            InputExample(text_a=text_a, label=label, meta=row)
+                        )
             random.shuffle(self.examples)
-        return random.sample(self.examples, int(len(self.examples) / 3))
+
+        return self.examples
+
 
 class IMDBDataProcessor(DataProcessor):
     def __init__(self, labels=['positive', 'negative'], labels_path=None):
