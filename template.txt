@@ -1,1 +1,0 @@
-{"placeholder":"text_a"} {"special": "<eos>"} Generate a less toxic sentence:\n{"mask"}.
