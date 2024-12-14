@@ -1,1 +1,1 @@
-{"placeholder": "text_a"} {"soft" : "The topics of the text above are"} {"mask"}
+{"placeholder":"text_a"} {"special": "<eos>"} Generate a less toxic sentence:\n{"mask"}.
