@@ -22,6 +22,8 @@ from openprompt.plms import load_plm_from_config
 from custom_dataset_loader import load_dataset
 from openprompt.utils.cuda import model_to_device
 
+##Topic Modeling Specific Enviroment##
+from bertopic import BERTopic
 
 
 
@@ -189,6 +191,17 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
         res = runner.test()
     elif test:
         res = runner.test(ckpt = 'best')
+        output_path = os.path.join(EXP_PATH, "generation_results.txt")
+
+        # Save the results to a file
+        with open(output_path, "w") as f:
+        if isinstance(res, list):  # If results are a list of outputs
+            for line in res:
+                f.write(f"{line}\n")
+        else:  # If results are a dictionary or string
+            f.write(str(res))
+        print(f"Test results saved to {output_path}")
+
     elif resume:
         res = runner.run(ckpt = 'last')
     else:
