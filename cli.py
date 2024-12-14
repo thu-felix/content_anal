@@ -23,7 +23,7 @@ from custom_dataset_loader import load_dataset
 from openprompt.utils.cuda import model_to_device
 
 ##Topic Modeling Specific Enviroment##
-from bertopic import BERTopic
+#from bertopic import BERTopic
 
 
 
@@ -190,7 +190,7 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
     if zero:
         res = runner.test()
     elif test:
-        res = runner.test(ckpt = 'best')
+        res = runner.test(ckpt = None) # No checkpoint files are needed.
         output_path = os.path.join(EXP_PATH, "generation_results.txt")
 
         # Save the results to a file
