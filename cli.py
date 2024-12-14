@@ -195,11 +195,11 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
 
         # Save the results to a file
         with open(output_path, "w") as f:
-        if isinstance(res, list):  # If results are a list of outputs
-            for line in res:
-                f.write(f"{line}\n")
-        else:  # If results are a dictionary or string
-            f.write(str(res))
+            if isinstance(res, list):  # If results are a list of outputs
+                for line in res:
+                    f.write(f"{line}\n")
+            else:  # If results are a dictionary or string
+                f.write(str(res))
         print(f"Test results saved to {output_path}")
 
     elif resume:
