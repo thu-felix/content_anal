@@ -24,13 +24,13 @@ task: generation
 
 generation: # Adding any arguments for generation here.
   parent_config: task
-  max_length: 256
+  max_length: 128
   min_length: 5
   temperature: 0.7
   do_sample: False
   top_k: 0
   top_p: 0.9
-  repetition_penalty: 1.2
+  repetition_penalty: 1.5
   num_beams: 5
   metric: 
     - sentence_bleu
