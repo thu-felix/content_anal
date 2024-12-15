@@ -17,7 +17,7 @@ plm:
 train:
   num_epochs: 5
   batch_size: 3
-  teacher_forcing: False
+  teacher_forcing: True
   gradient_accumulation_steps: 2
 
 task: generation
@@ -27,16 +27,13 @@ generation: # Adding any arguments for generation here.
   max_length: 512
   min_length: 5
   temperature: 0.7
-  do_sample: False
   top_k: 0
   top_p: 0.9
   repetition_penalty: 1.5
   num_beams: 5
   metric: 
     - sentence_bleu
-    - accuracy
-    - recall
-    - f1
+
   
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"
 few_shot:
