@@ -27,7 +27,6 @@ generation: # Adding any arguments for generation here.
   max_length: 512
   min_length: 5
   temperature: 0.7
-  do_sample: False
   top_k: 0
   top_p: 0.9
   repetition_penalty: 1.5
