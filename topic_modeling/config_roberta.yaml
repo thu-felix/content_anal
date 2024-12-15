@@ -80,14 +80,8 @@ task: generation
 generation: # Adding any arguments for generation here.
   parent_config: task
   max_length: 512
-  max_new_tokens: None
-  min_length: 5
-  temperature: 1.0
-  do_sample: False
-  top_k: 0
-  top_p: 0.9
-  repetition_penalty: 1.0
-  num_beams: 5
+  metric: 
+    - sentence_bleu
 
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"
 few_shot:
