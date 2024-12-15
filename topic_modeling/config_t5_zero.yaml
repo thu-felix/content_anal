@@ -35,7 +35,7 @@ generation: # Adding any arguments for generation here.
   metric: 
     - sentence_bleu  
 
-learning_setting: zero # selecting from "full", "zero_shot", "few_shot"
+learning_setting: zero_shot # selecting from "full", "zero_shot", "few_shot"
 few_shot:
   parent_config: learning_setting
   few_shot_sampling: sampling_from_train
