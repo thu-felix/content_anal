@@ -1,0 +1,1 @@
+{"placeholder": "text_a"} {"soft" : "Is the sentiment of the above text positive or negative?"} {"mask"} {"soft": None}
