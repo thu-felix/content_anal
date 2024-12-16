@@ -30,12 +30,12 @@ verbalizer: manual_verbalizer
 
 manual_template:
   choice: 0
-  file_path: ./sentim/soft_template.txt
+  file_path: ./soft_template.txt
 
 
 manual_verbalizer:
   choice: 0
-  file_path: ./sentim/verbalizer.txt
+  file_path: ./verbalizer.txt
   
 environment:
   num_gpus: 1
