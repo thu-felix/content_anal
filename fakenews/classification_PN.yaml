@@ -64,8 +64,4 @@ classification:
     - macro-f1
     - precision
     - recall
-<<<<<<< HEAD:sentim/classification_PN.yaml
   loss_function: cross_entropy ## the loss function for classification
-=======
-  loss_function: cross_entropy ## the loss function for classification
->>>>>>> fakenews_dev:fakenews/config_main.yaml
