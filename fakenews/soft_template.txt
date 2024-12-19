@@ -1,0 +1,1 @@
+{"placeholder": "text_a"} {"soft" : "Does the news text above real or fake?"} {"mask"} {"soft": None}
