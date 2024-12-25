@@ -51,4 +51,4 @@ verbalizer: ./verbalizer.txt
 
 soft_template:
   choice: 0
-  file_path: ./Classification/template.txt
+  file_path: ./template.txt
