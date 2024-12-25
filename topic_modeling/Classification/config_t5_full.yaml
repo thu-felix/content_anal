@@ -47,7 +47,7 @@ sampling_from_train:
     - 123
 
 template: soft_template
-verbalizer: manual_verbalizer  
+verbalizer: soft_verbalizer  
 
 soft_template:
   choice: 0
