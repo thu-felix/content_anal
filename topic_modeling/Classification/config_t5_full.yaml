@@ -49,24 +49,24 @@ sampling_from_train:
 template: soft_template
 verbalizer:
   sports: sports
-  fitness_&_health: fitness
-  food_&_dining: food
+  fitness_&_health: fitness, health
+  food_&_dining: food, dining
   family: family
-  fashion_&_style: fashion
+  fashion_&_style: fashion, style
   gaming: gaming
   music: music
-  learning_&_educational: learning
-  science_&_technology: science
-  business_&_entrepreneurs: business
-  film_tv_&_video: film
-  celebrity_&_pop_culture: celebrity
-  arts_&_culture: arts
-  diaries_&_daily_life: diaries
+  learning_&_educational: learning, education
+  science_&_technology: science, technology
+  business_&_entrepreneurs: business, entrepreneurs
+  film_tv_&_video: film, tv, video
+  celebrity_&_pop_culture: celebrity, pop_culture
+  arts_&_culture: arts, culture
+  diaries_&_daily_life: diaries, daily_life
   other_hobbies: hobbies
   relationships: relationships
-  news_&_social_concern: news
-  youth_&_student_life: youth
-  travel_&_adventure: travel
+  news_&_social_concern: news, social_concern
+  youth_&_student_life: youth, students
+  travel_&_adventure: travel, adventure
 
 soft_template:
   choice: 0
