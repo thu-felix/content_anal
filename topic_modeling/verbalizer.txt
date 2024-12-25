@@ -9,11 +9,11 @@ learning_&_educational: learning, education
 science_&_technology: science, technology
 business_&_entrepreneurs: business, entrepreneurs
 film_tv_&_video: film, tv, video
-celebrity_&_pop_culture: celebrity, pop_culture
+celebrity_&_pop_culture: celebrity, pop culture
 arts_&_culture: arts, culture
-diaries_&_daily_life: diaries, daily_life
+diaries_&_daily_life: diaries, daily life
 other_hobbies: hobbies
 relationships: relationships
-news_&_social_concern: news, social_concern
-youth_&_student_life: youth, students
+news_&_social_concern: news, social concern
+youth_&_student_life: youth, student life
 travel_&_adventure: travel, adventure
