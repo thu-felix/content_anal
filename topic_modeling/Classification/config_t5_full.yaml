@@ -53,6 +53,6 @@ soft_template:
   choice: 0
   file_path: ./template.txt
 
-manual_verbalizer:
+soft_verbalizer:
   choice: 0
   file_path: ./verbalizer.txt
