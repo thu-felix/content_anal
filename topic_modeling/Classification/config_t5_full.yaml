@@ -6,7 +6,7 @@ environment:
   num_gpus: 1
 
 reproduce:
-    seed: 42
+  seed: 42
 
 plm:
   model_name: t5
@@ -25,13 +25,13 @@ task: classification
 
 classification:
   parent_config: task
-  metric:  # the first one will be the main  to determine checkpoint.
-    - accuracy  # whether the higher metric value is better.
+  metric:  # the first one will be the main one to determine checkpoint.
+    - accuracy  # accuracy is the most common metric for single-label classification
     - micro-f1
     - macro-f1
     - precision
     - recall
-  loss_function: cross_entropy ## the loss function for classification
+  loss_function: cross_entropy  ## the loss function for classification (cross-entropy for single-label)
 
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"
 few_shot:
@@ -49,7 +49,7 @@ sampling_from_train:
 template: soft_template
 verbalizer: manual_verbalizer  
 
-soft_template :
+soft_template:
   choice: 0
   file_path: ./template.txt
 
