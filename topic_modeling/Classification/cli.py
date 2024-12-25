@@ -15,7 +15,7 @@ from openprompt.data_utils import FewShotSampler
 from openprompt.utils.logging import config_experiment_dir, init_logger, logger
 from openprompt.config import get_config, save_config_to_yaml
 from openprompt.plms import load_plm_from_config
-from custom_dataloader import load_dataset
+from custom_dataset_loader import load_dataset
 from openprompt.utils.cuda import model_to_device
 
 def build_dataloader(dataset, template, tokenizer, tokenizer_wrapper_class, config, split):
