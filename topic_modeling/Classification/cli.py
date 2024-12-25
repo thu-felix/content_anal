@@ -2,7 +2,7 @@
 
 import os
 import sys
-sys.path.append(".")
+sys.path.append("/content/content_anal/topic_modeling/Classification")
 
 import argparse
 
