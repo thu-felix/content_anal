@@ -31,7 +31,7 @@ classification:
     - macro-f1
     - precision
     - recall
-  loss_function: bce_with_logits ## the loss function for classification
+  loss_function: cross_entropy ## the loss function for classification
 
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"
 few_shot:
