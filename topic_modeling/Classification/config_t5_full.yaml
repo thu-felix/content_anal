@@ -47,8 +47,12 @@ sampling_from_train:
     - 123
 
 template: soft_template
-verbalizer: ./verbalizer.txt
+verbalizer: manual_verbalizer
 
 soft_template :
   choice: 0
-  file_path: ./template.txt
+  file_path: ./topic_modeling/template.txt
+  
+manual_verbalizer:
+  choice: 0
+  file_path: ./topic_modeling/verbalizer.txt
