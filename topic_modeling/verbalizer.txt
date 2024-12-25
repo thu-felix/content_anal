@@ -1,19 +1,21 @@
-0: arts_&_culture
-1: business_&_entrepreneurs
-2: celebrity_&_pop_culture
-3: diaries_&_daily_life
-4: family
-5: fashion_&_style
-6: film_tv_&_video
-7: fitness_&_health
-8: food_&_dining
-9: gaming
-10: learning_&_educational
-11: music
-12: news_&_social_concern
-13: other_hobbies
-14: relationships
-15: science_&_technology
-16: sports
-17: travel_&_adventure
-18: youth_&_student_life
+{
+  "arts_&_culture": "arts_&_culture",
+  "business_&_entrepreneurs": "business_&_entrepreneurs",
+  "celebrity_&_pop_culture": "celebrity_&_pop_culture",
+  "diaries_&_daily_life": "diaries_&_daily_life",
+  "family": "family",
+  "fashion_&_style": "fashion_&_style",
+  "film_tv_&_video": "film_tv_&_video",
+  "fitness_&_health": "fitness_&_health",
+  "food_&_dining": "food_&_dining",
+  "gaming": "gaming",
+  "learning_&_educational": "learning_&_educational",
+  "music": "music",
+  "news_&_social_concern": "news_&_social_concern",
+  "other_hobbies": "other_hobbies",
+  "relationships": "relationships",
+  "science_&_technology": "science_&_technology",
+  "sports": "sports",
+  "travel_&_adventure": "travel_&_adventure",
+  "youth_&_student_life": "youth_&_student_life"
+}
