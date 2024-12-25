@@ -47,12 +47,27 @@ sampling_from_train:
     - 123
 
 template: soft_template
-verbalizer: manual_verbalizer  
+verbalizer:
+  sports: sports
+  fitness_&_health: fitness
+  food_&_dining: food
+  family: family
+  fashion_&_style: fashion
+  gaming: gaming
+  music: music
+  learning_&_educational: learning
+  science_&_technology: science
+  business_&_entrepreneurs: business
+  film_tv_&_video: film
+  celebrity_&_pop_culture: celebrity
+  arts_&_culture: arts
+  diaries_&_daily_life: diaries
+  other_hobbies: hobbies
+  relationships: relationships
+  news_&_social_concern: news
+  youth_&_student_life: youth
+  travel_&_adventure: travel
 
 soft_template:
   choice: 0
   file_path: ./template.txt
-
-manual_verbalizer:
-  choice: 0
-  file_path: ./verbalizer.txt
