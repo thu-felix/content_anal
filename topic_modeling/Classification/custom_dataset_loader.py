@@ -62,11 +62,25 @@ class TweetTopicDataProcessor(DataProcessor):
     def __init__(self, labels=None, labels_path=None):
         if not labels:
             self.topic_labels = (
-                'arts_&_culture', 'business_&_entrepreneurs', 'celebrity_&_pop_culture', 
-                'diaries_&_daily_life', 'family', 'fashion_&_style', 'film_tv_&_video', 
-                'fitness_&_health', 'food_&_dining', 'gaming', 'learning_&_educational', 
-                'music', 'news_&_social_concern', 'other_hobbies', 'relationships', 
-                'science_&_technology', 'sports', 'travel_&_adventure', 'youth_&_student_life'
+                'arts_&_culture',
+                'business_&_entrepreneurs',
+                'celebrity_&_pop_culture',
+                'diaries_&_daily_life',
+                'family',
+                'fashion_&_style',
+                'film_tv_&_video',
+                'fitness_&_health',
+                'food_&_dining',
+                'gaming',
+                'learning_&_educational',
+                'music',
+                'news_&_social_concern',
+                'other_hobbies',
+                'relationships',
+                'science_&_technology',
+                'sports',
+                'travel_&_adventure',
+                'youth_&_student_life',
             )
             labels = self.topic_labels
         else:
@@ -75,21 +89,20 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        try:
-            label_index = data['gold_label_list'].index(1)  # This finds the first '1' in the list
-        except ValueError:
-            label_index = -1  # Handle if no label is found
+        # Find the first topic with a label of 1
+        selected_topic = None
+        for topic, label in zip(self.topic_labels, data['gold_label_list']):
+            if label == 1:
+                selected_topic = topic
+                break  # Stop once the first topic with label 1 is found
 
-        if label_index == -1:
-            return None  # If no label is found, return None
-
-        topic = self.topic_labels[label_index]  # Get the label based on the index
-        text_a = data['text']  # The tweet text
-
-        # Return a single-label InputExample
+        text_a = data['text']
+        
+        # If no topic is selected, you could either skip or set a default value
+        # For now, assuming a topic will always be selected
         return InputExample(
-            text_a=text_a,
-            tgt_text=topic
+            text_a = text_a,
+            tgt_text = selected_topic,
         )
 
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
@@ -100,11 +113,8 @@ class TweetTopicDataProcessor(DataProcessor):
             return []
 
         ds = datasets.load_dataset(data_dir, 'tweet_topic', split=split)
-        examples = list(map(self.convert_data, ds))
+        return list(map(self.convert_data, ds))
 
-        # Filter out any invalid examples (None entries)
-        return [example for example in examples if example is not None]
-        
 PROCESSORS = {
     "fakenews": FakeRealDataProcessor,
     "imdb": IMDBDataProcessor,
