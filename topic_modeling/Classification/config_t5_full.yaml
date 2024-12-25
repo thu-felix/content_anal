@@ -6,7 +6,7 @@ environment:
   num_gpus: 1
 
 reproduce:
-  seed: 42
+    seed: 42
 
 plm:
   model_name: t5
@@ -25,13 +25,13 @@ task: classification
 
 classification:
   parent_config: task
-  metric:  # the first one will be the main one to determine checkpoint.
-    - accuracy  # accuracy is the most common metric for single-label classification
+  metric:  # the first one will be the main  to determine checkpoint.
+    - accuracy  # whether the higher metric value is better.
     - micro-f1
     - macro-f1
     - precision
     - recall
-  loss_function: cross_entropy  ## the loss function for classification (cross-entropy for single-label)
+  loss_function: cross_entropy ## the loss function for classification
 
 learning_setting: full # selecting from "full", "zero_shot", "few_shot"
 few_shot:
@@ -47,27 +47,8 @@ sampling_from_train:
     - 123
 
 template: soft_template
-verbalizer:
-  sports: sports
-  fitness_&_health: fitness, health
-  food_&_dining: food, dining
-  family: family
-  fashion_&_style: fashion, style
-  gaming: gaming
-  music: music
-  learning_&_educational: learning, education
-  science_&_technology: science, technology
-  business_&_entrepreneurs: business, entrepreneurs
-  film_tv_&_video: film, tv, video
-  celebrity_&_pop_culture: celebrity, pop_culture
-  arts_&_culture: arts, culture
-  diaries_&_daily_life: diaries, daily_life
-  other_hobbies: hobbies
-  relationships: relationships
-  news_&_social_concern: news, social_concern
-  youth_&_student_life: youth, students
-  travel_&_adventure: travel, adventure
+verbalizer: 
 
-soft_template:
+soft_template :
   choice: 0
   file_path: ./template.txt
