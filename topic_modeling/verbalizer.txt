@@ -1,19 +1,19 @@
-{"arts_&_culture": "arts_&_culture",
-  "business_&_entrepreneurs": "business_&_entrepreneurs",
-  "celebrity_&_pop_culture": "celebrity_&_pop_culture",
-  "diaries_&_daily_life": "diaries_&_daily_life",
-  "family": "family",
-  "fashion_&_style": "fashion_&_style",
-  "film_tv_&_video": "film_tv_&_video",
-  "fitness_&_health": "fitness_&_health",
-  "food_&_dining": "food_&_dining",
-  "gaming": "gaming",
-  "learning_&_educational": "learning_&_educational",
-  "music": "music",
-  "news_&_social_concern": "news_&_social_concern",
-  "other_hobbies": "other_hobbies",
-  "relationships": "relationships",
-  "science_&_technology": "science_&_technology",
-  "sports": "sports",
-  "travel_&_adventure": "travel_&_adventure",
-  "youth_&_student_life": "youth_&_student_life"}
+sports
+fitness_&_health
+food_&_dining
+family
+fashion_&_style
+gaming
+music
+learning_&_educational
+science_&_technology
+business_&_entrepreneurs
+film_tv_&_video
+celebrity_&_pop_culture
+arts_&_culture
+diaries_&_daily_life
+other_hobbies
+relationships
+news_&_social_concern
+youth_&_student_life
+travel_&_adventure
