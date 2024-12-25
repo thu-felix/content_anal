@@ -110,7 +110,7 @@ class TweetTopicDataProcessor(DataProcessor):
         # Return an InputExample with the text and the corresponding single label
         return InputExample(
             text_a=text_a,
-            tgt_text=topic,
+            tgt_text=topic
         )
 
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
