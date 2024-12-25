@@ -51,8 +51,8 @@ verbalizer: manual_verbalizer
 
 soft_template :
   choice: 0
-  file_path: ./topic_modeling/template.txt
+  file_path: ./template.txt
   
 manual_verbalizer:
   choice: 0
-  file_path: ./topic_modeling/verbalizer.txt
+  file_path: ./verbalizer.txt
