@@ -1,3 +1,0 @@
-Topic: {text_a} 
-What is the topic of this tweet? 
-Answer: {label}
