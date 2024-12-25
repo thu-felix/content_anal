@@ -89,32 +89,25 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        # Get the topic label (assuming only one label)
-        # Extract the first 1 from the gold_label_list
         topics = ', '.join([topic[0] for topic in list(zip(self.topic_labels, data['gold_label_list'])) if topic[1] == 1])
-    
-        # Assuming we want to use just the first topic if there are multiple 1's in gold_label_list
-        # Take the first topic if there are multiple 1's in gold_label_list
-        label = topics.split(', ')[0] if topics else 'unknown'  # Use the first topic (or 'unknown' if no label found)
-    
-        # Get the tweet text
+
         text_a = data['text']
-    
+
         return InputExample(
-            text_a=text_a,  # tweet text
-            label=label,     # single label (topic)
+            text_a = text_a,
+            tgt_text = topics,
         )
 
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
         if split == "valid" or split == "dev":
             split = "validation"
         
-        if data_dir is None:
+        if data_dir == None:
             return []
 
-        ds = datasets.load_dataset(data_dir, 'tweet_topic', split=split)
+        ds = datasets.load_dataset(data_dir,'tweet_topic', split=split)
         return list(map(self.convert_data, ds))
-        
+
 PROCESSORS = {
     "fakenews": FakeRealDataProcessor,
     "imdb": IMDBDataProcessor,
