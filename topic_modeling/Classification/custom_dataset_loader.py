@@ -62,25 +62,11 @@ class TweetTopicDataProcessor(DataProcessor):
     def __init__(self, labels=None, labels_path=None):
         if not labels:
             self.topic_labels = (
-                'arts_&_culture',
-                'business_&_entrepreneurs',
-                'celebrity_&_pop_culture',
-                'diaries_&_daily_life',
-                'family',
-                'fashion_&_style',
-                'film_tv_&_video',
-                'fitness_&_health',
-                'food_&_dining',
-                'gaming',
-                'learning_&_educational',
-                'music',
-                'news_&_social_concern',
-                'other_hobbies',
-                'relationships',
-                'science_&_technology',
-                'sports',
-                'travel_&_adventure',
-                'youth_&_student_life',
+                'arts_&_culture', 'business_&_entrepreneurs', 'celebrity_&_pop_culture', 
+                'diaries_&_daily_life', 'family', 'fashion_&_style', 'film_tv_&_video', 
+                'fitness_&_health', 'food_&_dining', 'gaming', 'learning_&_educational', 
+                'music', 'news_&_social_concern', 'other_hobbies', 'relationships', 
+                'science_&_technology', 'sports', 'travel_&_adventure', 'youth_&_student_life'
             )
             labels = self.topic_labels
         else:
@@ -89,25 +75,18 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        # Try to find the first index with the label '1'
         try:
-            # Find the first occurrence of 1 in the gold_label_list
-            label_index = data['gold_label_list'].index(1)
+            label_index = data['gold_label_list'].index(1)  # This finds the first '1' in the list
         except ValueError:
-            # If there's no '1' in the list, you could return None or handle it differently
-            label_index = -1  # This could indicate an error, adjust according to your needs
+            label_index = -1  # Handle if no label is found
 
         if label_index == -1:
-            # Handle the case where no label is found (e.g., return None or log it)
-            return None
+            return None  # If no label is found, return None
 
-        # Get the topic corresponding to the label index
-        topic = self.topic_labels[label_index]
+        topic = self.topic_labels[label_index]  # Get the label based on the index
+        text_a = data['text']  # The tweet text
 
-        # Extract the tweet text
-        text_a = data['text']
-
-        # Return an InputExample with the text and the corresponding single label
+        # Return a single-label InputExample
         return InputExample(
             text_a=text_a,
             tgt_text=topic
@@ -120,13 +99,10 @@ class TweetTopicDataProcessor(DataProcessor):
         if data_dir is None:
             return []
 
-        # Load dataset from Hugging Face
         ds = datasets.load_dataset(data_dir, 'tweet_topic', split=split)
-        
-        # Convert the dataset into a list of examples
         examples = list(map(self.convert_data, ds))
 
-        # Filter out any None entries that might be in the examples (in case no '1' was found)
+        # Filter out any invalid examples (None entries)
         return [example for example in examples if example is not None]
         
 PROCESSORS = {
