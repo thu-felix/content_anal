@@ -1,19 +1,19 @@
-sports: sports
-fitness_&_health: fitness, health
-food_&_dining: food, dining
-family: family
-fashion_&_style: fashion, style
-gaming: gaming
-music: music
-learning_&_educational: learning, education
-science_&_technology: science, technology
-business_&_entrepreneurs: business, entrepreneurs
-film_tv_&_video: film, tv, video
-celebrity_&_pop_culture: celebrity, pop culture
-arts_&_culture: arts, culture
-diaries_&_daily_life: diaries, daily life
-other_hobbies: hobbies
-relationships: relationships
-news_&_social_concern: news, social concern
-youth_&_student_life: youth, student life
-travel_&_adventure: travel, adventure
+arts_&_culture: "arts and culture"
+business_&_entrepreneurs: "business and entrepreneurs"
+celebrity_&_pop_culture: "celebrity and pop culture"
+diaries_&_daily_life: "diaries and daily life"
+family: "family"
+fashion_&_style: "fashion and style"
+film_tv_&_video: "film, tv, and video"
+fitness_&_health: "fitness and health"
+food_&_dining: "food and dining"
+gaming: "gaming"
+learning_&_educational: "learning and educational"
+music: "music"
+news_&_social_concern: "news and social concern"
+other_hobbies: "other hobbies"
+relationships: "relationships"
+science_&_technology: "science and technology"
+sports: "sports"
+travel_&_adventure: "travel and adventure"
+youth_&_student_life: "youth and student life"
