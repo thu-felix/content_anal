@@ -99,7 +99,11 @@ class TweetTopicDataProcessor(DataProcessor):
 
         text_a = data['text']
 
-        # Only a single topic is assigned as the target text (for single-label classification)
+        # Ensure tgt_text is set correctly for single-label classification
+        if topic is None:
+            logger.warning(f"No topic found for the tweet: {text_a}")
+            topic = "unknown"  # Default to unknown if no label is found
+
         return InputExample(
             text_a=text_a,  # The input text (tweet)
             tgt_text=topic,  # The target text (the selected topic label)
@@ -114,7 +118,6 @@ class TweetTopicDataProcessor(DataProcessor):
 
         ds = datasets.load_dataset(data_dir, 'tweet_topic', split=split)
         return list(map(self.convert_data, ds))
-
 PROCESSORS = {
     "fakenews": FakeRealDataProcessor,
     "imdb": IMDBDataProcessor,
