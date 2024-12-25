@@ -89,20 +89,20 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        # Find the first topic with a label of 1
-        selected_topic = None
-        for topic, label in zip(self.topic_labels, data['gold_label_list']):
-            if label == 1:
-                selected_topic = topic
-                break  # Stop once the first topic with label 1 is found
+        # Find the first topic with a label of 1 in the 'gold_label_list'
+        # This ensures that we select a single label for classification
+        topic = None
+        for label, is_present in zip(self.topic_labels, data['gold_label_list']):
+            if is_present == 1:
+                topic = label
+                break  # Take the first label with '1'
 
         text_a = data['text']
-        
-        # If no topic is selected, you could either skip or set a default value
-        # For now, assuming a topic will always be selected
+
+        # Only a single topic is assigned as the target text (for single-label classification)
         return InputExample(
-            text_a = text_a,
-            tgt_text = selected_topic,
+            text_a=text_a,  # The input text (tweet)
+            tgt_text=topic,  # The target text (the selected topic label)
         )
 
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
