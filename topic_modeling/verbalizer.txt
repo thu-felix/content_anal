@@ -1,5 +1,4 @@
-{
-  "arts_&_culture": "arts_&_culture",
+{"arts_&_culture": "arts_&_culture",
   "business_&_entrepreneurs": "business_&_entrepreneurs",
   "celebrity_&_pop_culture": "celebrity_&_pop_culture",
   "diaries_&_daily_life": "diaries_&_daily_life",
@@ -17,5 +16,4 @@
   "science_&_technology": "science_&_technology",
   "sports": "sports",
   "travel_&_adventure": "travel_&_adventure",
-  "youth_&_student_life": "youth_&_student_life"
-}
+  "youth_&_student_life": "youth_&_student_life"}
