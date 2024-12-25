@@ -1,0 +1,55 @@
+dataset:
+  name: tweet_topic
+  path: cardiffnlp/super_tweeteval
+
+environment:
+  num_gpus: 1
+
+reproduce:
+    seed: 42
+
+plm:
+  model_name: t5
+  model_path: t5-small
+  optimize: 
+    freeze_para: True
+
+train:
+  num_epochs: 5
+  batch_size: 2
+  teacher_forcing: True
+  gradient_accumulation_steps: 2 
+  gradient_clipping: 1.0 
+
+task: classification
+
+classification:
+  parent_config: task
+  metric:  # the first one will be the main  to determine checkpoint.
+    - accuracy  # whether the higher metric value is better.
+    - micro-f1
+    - macro-f1
+    - precision
+    - recall
+    - sentence_bleu
+  loss_function: cross_entropy ## the loss function for classification
+
+learning_setting: few_shot # selecting from "full", "zero_shot", "few_shot"
+few_shot:
+  parent_config: learning_setting
+  few_shot_sampling: sampling_from_train
+  
+sampling_from_train:
+  parent_config: few_shot_sampling
+  num_examples_per_label: 100
+  also_sample_dev: True
+  num_examples_per_label_dev: 100
+  seed:
+    - 123
+
+template: soft_template
+verbalizer: 
+
+soft_template :
+  choice: 0
+  file_path: ./template.txt
