@@ -1,0 +1,2 @@
+Classify the topic of the tweet: {text_a}
+Answer: {label}
