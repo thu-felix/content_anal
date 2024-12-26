@@ -53,7 +53,6 @@ def main():
 
     # load dataset. The valid_dataset can be None
     train_dataset, valid_dataset, test_dataset, Processor = load_dataset(config, test = args.test is not None or config.learning_setting == 'zero_shot')
-    print("Sample train dataset entry:", train_dataset[0])  # Add this to debug
 
     # main
     if config.learning_setting == 'full':
@@ -145,7 +144,6 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
     test_dataloader = build_dataloader(test_dataset, template, plm_tokenizer, plm_wrapper_class, config, "test") if test_dataset else None
 
     if config.task == "classification":
-        print("Do Classificaition \n")
         if config.classification.auto_t or config.classification.auto_v:
             runner = LMBFFClassificationRunner(train_dataset = train_dataset,
                                                 valid_dataset = valid_dataset,
