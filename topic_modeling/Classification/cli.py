@@ -21,22 +21,6 @@ from openprompt.plms import load_plm_from_config
 # from openprompt.data_utils import load_dataset
 from new_custom_dataset_loader import load_dataset
 from openprompt.utils.cuda import model_to_device
-from sklearn.metrics import precision_score, recall_score, f1_score
-
-def classification_metrics(preds, labels, metric_name, average=None):
-    from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
-    if metric_name == 'accuracy':
-        return accuracy_score(labels, preds)
-    elif metric_name == 'micro-f1':
-        return f1_score(labels, preds, average='micro')
-    elif metric_name == 'macro-f1':
-        return f1_score(labels, preds, average='macro')
-    elif metric_name == 'precision':
-        return precision_score(labels, preds, average=average)
-    elif metric_name == 'recall':
-        return recall_score(labels, preds, average=average)
-    else:
-        raise ValueError(f"Unsupported metric: {metric_name}")
 
 def build_dataloader(dataset, template, tokenizer,tokenizer_wrapper_class, config, split):
     dataloader = PromptDataLoader(
@@ -185,7 +169,13 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
                                     test_dataloader = test_dataloader,
                                     id2label = Processor.id2label,
                                     config = config,
-                                    metrics=config.classification.metric
+                                    metrics={
+                                    'accuracy': {},
+                                    'micro-f1': {'average': 'micro'},
+                                    'macro-f1': {'average': 'macro'},
+                                    'precision': {'average': 'macro'},
+                                    'recall': {'average': 'macro'}
+                                    }
             )
     elif config.task == "generation":
         runner = GenerationRunner(
