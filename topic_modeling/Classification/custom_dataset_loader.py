@@ -89,15 +89,16 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        topics = ', '.join([topic[0] for topic in list(zip(self.topic_labels, data['gold_label_list'])) if topic[1] == 1])
-
+        topics = [topic for topic, is_present in zip(self.topic_labels, data['gold_label_list']) if is_present == 1]
+        label = topics[0] if topics else "other_hobbies"  # Default to a category if none are present
+    
         text_a = data['text']
-
+    
         return InputExample(
-            text_a = text_a,
-            tgt_text = topics,
+            text_a=text_a,
+            label=self.labels.index(label)  # Convert to index for classification
         )
-
+        
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
         if split == "valid" or split == "dev":
             split = "validation"
