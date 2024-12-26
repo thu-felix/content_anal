@@ -26,11 +26,17 @@ classification:
   auto_t: False
   auto_v: False
   metric:
-    - accuracy
-    - micro-f1
-    - macro-f1
-    - precision
-    - recall
+    - name: accuracy
+    - name: micro-f1
+    - name: macro-f1
+    - name: precision
+      average: micro  # Precision with micro averaging
+    - name: precision
+      average: macro  # Precision with macro averaging
+    - name: precision
+      average: weighted  # Precision with weighted averaging
+    - name: recall
+      average: macro  # Recall with macro averaging
   loss_function: cross_entropy
 
 learning_setting: full
