@@ -89,13 +89,13 @@ class TweetTopicDataProcessor(DataProcessor):
         super().__init__(labels, labels_path)
 
     def convert_data(self, data):
-        label = ', '.join([topic[0] for topic in list(zip(self.topic_labels, data['gold_label_list'])) if topic[1] == 1])
+        topics = ', '.join([topic[0] for topic in list(zip(self.topic_labels, data['gold_label_list'])) if topic[1] == 1])
 
         text_a = data['text']
 
         return InputExample(
             text_a = text_a,
-            tgt_text = label,
+            tgt_text = topics,
         )
 
     def get_examples(self, data_dir='cardiffnlp/super_tweeteval', split='train'):
