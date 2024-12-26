@@ -25,6 +25,8 @@ task: classification
 
 classification:
   parent_config: task
+  auto_t: False
+  auto_v: False
   metric:
     - accuracy
     - micro-f1
