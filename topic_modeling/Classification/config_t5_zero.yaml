@@ -6,40 +6,36 @@ environment:
   num_gpus: 1
 
 reproduce:
-    seed: 42
+  seed: 42
 
 plm:
   model_name: t5
   model_path: t5-small
-  optimize: 
+  optimize:
     freeze_para: True
 
 train:
   num_epochs: 5
   batch_size: 2
-  teacher_forcing: True
-  gradient_accumulation_steps: 2 
-  gradient_clipping: 1.0 
+  gradient_accumulation_steps: 2
 
 task: classification
 
 classification:
   parent_config: task
-  metric:  # the first one will be the main  to determine checkpoint.
-    - accuracy  # whether the higher metric value is better.
-    - micro-f1
+  auto_t: False
+  auto_v: False
+  metric:
+    - accuracy
     - macro-f1
-    - precision
-    - recall
-    - sentence_bleu
-  loss_function: cross_entropy ## the loss function for classification
-
-
-learning_setting: zero_shot # selecting from "full", "zero_shot", "few_shot"
+    - micro-f1
+  loss_function: cross_entropy
+  
+learning_setting: zero_shot
 few_shot:
   parent_config: learning_setting
   few_shot_sampling: sampling_from_train
-  
+
 sampling_from_train:
   parent_config: few_shot_sampling
   num_examples_per_label: 100
@@ -49,8 +45,12 @@ sampling_from_train:
     - 123
 
 template: soft_template
-verbalizer: 
+verbalizer: manual_verbalizer
 
-soft_template :
+soft_template:
   choice: 0
   file_path: ./template.txt
+  
+manual_verbalizer:
+  choice: 0
+  file_path: ./verbalizer.txt
