@@ -53,6 +53,7 @@ def main():
 
     # load dataset. The valid_dataset can be None
     train_dataset, valid_dataset, test_dataset, Processor = load_dataset(config, test = args.test is not None or config.learning_setting == 'zero_shot')
+    print("Sample train dataset entry:", train_dataset[0])  # Add this to debug
 
     # main
     if config.learning_setting == 'full':
