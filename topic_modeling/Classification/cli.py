@@ -144,6 +144,7 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
     test_dataloader = build_dataloader(test_dataset, template, plm_tokenizer, plm_wrapper_class, config, "test") if test_dataset else None
 
     if config.task == "classification":
+        print("Do Classificaition \n")
         if config.classification.auto_t or config.classification.auto_v:
             runner = LMBFFClassificationRunner(train_dataset = train_dataset,
                                                 valid_dataset = valid_dataset,
