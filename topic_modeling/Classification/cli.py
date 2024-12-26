@@ -168,14 +168,7 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
                                     valid_dataloader = valid_dataloader,
                                     test_dataloader = test_dataloader,
                                     id2label = Processor.id2label,
-                                    config = config,
-                                    metrics={
-                                    'accuracy': {},
-                                    'micro-f1': {'average': 'micro'},
-                                    'macro-f1': {'average': 'macro'},
-                                    'precision': {'average': 'macro'},
-                                    'recall': {'average': 'macro'}
-                                    }
+                                    config = config
             )
     elif config.task == "generation":
         runner = GenerationRunner(
