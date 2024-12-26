@@ -184,7 +184,7 @@ def trainer(EXP_PATH, config, Processor, train_dataset = None, valid_dataset = N
                                     valid_dataloader = valid_dataloader,
                                     test_dataloader = test_dataloader,
                                     id2label = Processor.id2label,
-                                    config = config
+                                    config = config,
                                     metrics=config.classification.metric
             )
     elif config.task == "generation":
