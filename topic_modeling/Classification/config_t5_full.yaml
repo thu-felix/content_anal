@@ -29,9 +29,10 @@ classification:
     - accuracy
     - micro-f1
     - macro-f1
-    - precision_macro
-    - precision_micro
-    - recall_macro
+    - precision
+      average: macro  
+    - recall
+      average: macro   
   loss_function: cross_entropy
 
 learning_setting: full
