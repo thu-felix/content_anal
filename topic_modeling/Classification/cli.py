@@ -24,14 +24,17 @@ from openprompt.utils.cuda import model_to_device
 from sklearn.metrics import precision_score, recall_score, f1_score
 
 def classification_metrics(preds, labels, metric_name, average=None):
+    from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
     if metric_name == 'accuracy':
         return accuracy_score(labels, preds)
+    elif metric_name == 'micro-f1':
+        return f1_score(labels, preds, average='micro')
+    elif metric_name == 'macro-f1':
+        return f1_score(labels, preds, average='macro')
     elif metric_name == 'precision':
         return precision_score(labels, preds, average=average)
     elif metric_name == 'recall':
         return recall_score(labels, preds, average=average)
-    elif metric_name == 'f1_score':
-        return f1_score(labels, preds, average=average)
     else:
         raise ValueError(f"Unsupported metric: {metric_name}")
 
