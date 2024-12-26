@@ -31,7 +31,7 @@ classification:
     - micro-f1
   loss_function: cross_entropy
   
-learning_setting: few-shot
+learning_setting: few_shot
 few_shot:
   parent_config: learning_setting
   few_shot_sampling: sampling_from_train
