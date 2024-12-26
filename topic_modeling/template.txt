@@ -1,1 +1,1 @@
-{"placeholder": "text_a"} {"soft" : "The topics of the text above are"} {"mask"}
+{"placeholder": "text_a"} {"soft": "The topic of the text is"} {"mask"}.
