@@ -27,9 +27,12 @@ classification:
   auto_v: False
   metric:
     - accuracy
-    - micro-f1
-    - macro-f1
-    - recall
+    - loose-micro-f1
+    - loose-macro-f1
+    - loose-micro-precision
+    - loose-macro-precision
+    - loose-micro-recall
+    - loose-macro-recall
   loss_function: cross_entropy
   
 learning_setting: full
