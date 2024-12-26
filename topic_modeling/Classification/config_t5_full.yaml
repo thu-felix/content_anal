@@ -25,7 +25,7 @@ classification:
   parent_config: task
   auto_t: False
   auto_v: False
-  metrics:
+  metric:
     - accuracy  # whether the higher metric value is better.
     - micro-f1
     - macro-f1
