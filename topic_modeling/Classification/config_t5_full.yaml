@@ -26,7 +26,7 @@ classification:
   auto_t: False
   auto_v: False
   metric:
-    - accuracy  # whether the higher metric value is better.
+    - accuracy
     - micro-f1
     - macro-f1
     - recall
