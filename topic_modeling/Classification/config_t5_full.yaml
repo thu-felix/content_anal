@@ -25,6 +25,10 @@ classification:
   parent_config: task
   auto_t: False
   auto_v: False
+    - accuracy  # whether the higher metric value is better.
+    - micro-f1
+    - macro-f1
+    - recall
   loss_function: cross_entropy
   
 learning_setting: full
