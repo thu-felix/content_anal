@@ -23,3 +23,9 @@ cd topic_modeling
 ../cli.py --config_yaml config_t5_full.yaml
 ```
 In the each task's directories also stored python notebooks on running the openprompt powered model training, they also included python notebooks or scripts to run a baseline model to compare the results with the PromptModel.
+
+##Model Test
+1.Download Model_Test.ipynb file in main branch and open in Google Colab.
+2.Download the checkpoint files of trained models. (Download Link: [https://drive.google.com/drive/folders/1es6UDG_TAD3-1DiL_Aj1H2iyNhwBVqoY?usp=sharing](https://drive.google.com/file/d/1LkSeshTw4pzuJUYyAtoqUe_o4QuLf7sO/view?usp=sharing) )
+3.Run the code snippets from top to bottom.
+
